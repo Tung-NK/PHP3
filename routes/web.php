@@ -1,18 +1,41 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SVController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+// GET, POST, PUT, PATCH, DELETE (method giao thức http)
+// Base url: [http://127.0.0.1:8000]
+// Quy chuẩn sale: "danh-sach-san-pham"
+
+
+Route::get('home', function (){
+    echo "123";
 });
+
+Route::get('/',function(){
+    echo 'Đây là php3';
+});
+
+
+Route::get('list-product', [ProductController::class, 'showProduct']);
+
+
+// Truyền dũ liệu từ Route => Controller
+
+//Slug
+// http://127.0.0.1:8000/get-product/3
+Route::get('get-product/{id}/{name?}',[ProductController::class, 'getProduct']);
+
+
+
+
+//Params
+// http://127.0.0.1:8000/update-product?id=3&name=iphone
+Route::get('update-product/{id}/{name}',[ProductController::class, 'upadateProduct']);
+
+
+// Lab1
+
+Route::get('thong-tin-sv', [SVController::class, 'getSV']);
