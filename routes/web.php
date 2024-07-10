@@ -46,6 +46,11 @@ Route::get('thong-tin-sv', [SVController::class, 'getSV']);
 Route::get('query-builder', [ProductController::class, 'queryBuilder']);
 
 // CRUD bảng users
-Route::group(['prefix' => 'users'], function () {
-    Route::get('list-users', [UserController::class, 'listUsers']);
+Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+    Route::get('list-users', [UserController::class, 'listUsers'])->name('list');
+
+    Route::get('add-users', [UserController::class, 'viewAdd'])->name('addUsers'); // đặt trung hàm cx đc
+    Route::post('add-users', [UserController::class, 'add'])->name('add');
+
+    Route::get('update-users/{{id}}', [UserController::class, 'viewUpdate'])->name('viewUpdate');
 });
