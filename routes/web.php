@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SVController;
+use App\Http\Controllers\UserControler;
 use App\Http\Controllers\UserController;
 
 
@@ -45,12 +46,17 @@ Route::get('thong-tin-sv', [SVController::class, 'getSV']);
 
 Route::get('query-builder', [ProductController::class, 'queryBuilder']);
 
-// CRUD bảng users
-Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-    Route::get('list-users', [UserController::class, 'listUsers'])->name('list');
 
-    Route::get('add-users', [UserController::class, 'viewAdd'])->name('addUsers'); // đặt trung hàm cx đc
-    Route::post('add-users', [UserController::class, 'add'])->name('add');
+// CRUD
 
-    Route::get('update-users/{{id}}', [UserController::class, 'viewUpdate'])->name('viewUpdate');
+Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+    Route::get('listUser', [UserControler::class, 'listUser'])-> name('listUser');
+
+    Route::get('addUser', [UserControler::class, 'viewAdd'])->name('viewAdd');
+    Route::post('addUser', [UserControler::class, 'addUser'])->name('addUser');
+
+    Route::get('detaillUser/{id}', [UserControler::class, 'detail'])-> name('detail');
+    Route::post('detaillUser/{id}', [UserControler::class, 'update'])-> name('update'); 
+
+    Route::get('delete/{id}', [UserControler::class, 'delete'])-> name('delete');
 });
