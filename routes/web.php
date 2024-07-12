@@ -2,10 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductController2;
 use App\Http\Controllers\SVController;
 use App\Http\Controllers\UserControler;
-use App\Http\Controllers\UserController;
-
 
 // GET, POST, PUT, PATCH, DELETE (method giao thức http)
 // Base url: [http://127.0.0.1:8000]
@@ -46,7 +45,6 @@ Route::get('thong-tin-sv', [SVController::class, 'getSV']);
 
 Route::get('query-builder', [ProductController::class, 'queryBuilder']);
 
-
 // CRUD
 
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
@@ -59,4 +57,22 @@ Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
     Route::post('detaillUser/{id}', [UserControler::class, 'update'])-> name('update'); 
 
     Route::get('delete/{id}', [UserControler::class, 'delete'])-> name('delete');
+});
+
+// Lab 2
+
+Route::group(['prefix' => 'product', 'as' => 'product.'], function (){
+    Route::get('listProduct', [ProductController2::class, 'listProduct'])-> name('listProduct');
+
+    Route::get('addProduct', [ProductController2::class, 'viewAdd'])->name('viewAdd');
+    Route::post('addProduct', [ProductController2::class, 'addProduct'])->name('addProduct');
+
+    Route::get('updateProduct/{id}', [ProductController2::class, 'viewUpdate'])->name('viewUpdate');
+    Route::post('updateProduct/{id}', [ProductController2::class, 'updateProduct'])->name('updateProduct');
+
+    Route::get('delete/{id}', [ProductController2::class, 'delete'])->name('delete');
+
+    Route::post('search', [ProductController2::class, 'search'])-> name('search');
+
+
 });
