@@ -76,3 +76,7 @@ Route::group(['prefix' => 'product', 'as' => 'product.'], function (){
 
 
 });
+
+Route::get('test', function (){
+    return view('admin.products.list');
+});
