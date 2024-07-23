@@ -2,18 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\ProductComment;
+use App\Models\Order;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-
-class ProductCommentSeedes extends Seeder
+class OrderSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        ProductComment::factory() -> count(15) -> create();
+        Order::factory()->count(15)->create();
     }
 }
