@@ -11,6 +11,10 @@ class Product extends Model
 
     protected $table = 'products'; // Bắt buộc phải có
 
+    protected $fillable = [
+        'name', 'price','image','description'
+    ];
+
     // public $primaryKey = 'id'; // Mặc định là id nên không cần khai báo
     // public $incrementing = true; // Tự động tăng, nếu primary không phải số thì đặt false
     // public $timestamps = true; // Nếu không muốn ghi created_at và updated_at thì đặt false
