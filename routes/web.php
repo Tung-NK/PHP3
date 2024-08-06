@@ -7,6 +7,8 @@ use App\Http\Controllers\SVController;
 use App\Http\Controllers\UserControler;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\AuthenController;
+use App\Http\Controllers\User\DashboarController;
+
 // use App\Http\Kernel;
 // use App\Http\Middleware\CheckAdminMiddleware;
 
@@ -85,6 +87,10 @@ use App\Http\Controllers\AuthenController;
 
 Route::get('login', [AuthenController::class, 'login'])->name('login');
 Route::post('login', [AuthenController::class, 'postLogin'])->name('postLogin');
+
+Route::get('register', [AuthenController::class, 'register'])->name('register');
+Route::post('register', [AuthenController::class, 'postRegister'])->name('postRegister');
+
 Route::get('logout', [AuthenController::class, 'logout'])->name('logout');
 
 // CRUD product
@@ -107,6 +113,13 @@ Route::group([
         Route::patch('update/{idProduct}', [ProductController::class, 'updatePath'])->name('updatePath');
 
 
-        Route::delete('delete', [ProductController::class, 'deleteProduct'])-> name('deleteProduct');
+        Route::delete('delete', [ProductController::class, 'deleteProduct'])->name('deleteProduct');
     });
+});
+Route::group(['prefix' => 'user', 'as' => 'users.'], function () {
+    Route::get('dashboard', [DashboarController::class, 'dashboard'])->name('dashboard');
+
+    Route::post('search-product', [DashboarController::class, 'searchProduct'])->name('searchProduct');
+
+    Route::get('deatil-product', [DashboarController::class, 'deatilProduct'])->name('deatilProduct');
 });

@@ -5,13 +5,13 @@
             Quản lý người dùng
         </a>
         <a href="#" class="list-group-item">
-            Quản lý sản phẩm
+            Xác thực người dùng
         </a>
         <a href="#" class="list-group-item ">
-            Báo cáo
+            Blog
         </a>
         <a href="#" class="list-group-item ">
-            Thống kê
+            Xác thực cập nhật hồ sơ người dùng
         </a>
     </div>
 </div>

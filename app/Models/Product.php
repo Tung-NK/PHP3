@@ -11,7 +11,10 @@ class Product extends Model
 
     protected $table = 'products'; // Bắt buộc phải có
 
+    public $primaryKey = 'product_id';
+
     protected $fillable = [
+        'product_id',
         'name', 'price','image','description'
     ];
 

@@ -12,14 +12,14 @@
 
 <body>
     <div class="container w-50">
-        <h4 class="text-center mt-3">Login</h4>
+        <h4 class="text-center mt-3">Register</h4>
         @if (session('err'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <strong>{{ session('err') }}</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <form action="{{ route('postLogin') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('postRegister') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="">Email</label>
@@ -37,14 +37,21 @@
                 @enderror
             </div>
 
-            
+            <div class="mb-3">
+                <label for="">Confirm Password</label>
+                <input type="text" class="form-control" name="password_confirmation">
+                @error('password')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+
+
             <div class="mb-3">
                 <button class="btn btn-success">Submit</button>
             </div>
-            
-            
+
+
         </form>
-        <a class="btn" href="{{route('register')}}">Đăng kí</a>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
